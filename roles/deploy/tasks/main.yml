@@ -1,0 +1,27 @@
+---
+- name: Install latest NGINX
+  yum:
+    name: nginx
+    state: latest
+
+- name: Start NGINX
+  service:
+    name: nginx
+    state: started
+
+- name: Ensure /etc/nginx/conf.d exists
+  file:
+    path: /etc/nginx/conf.d
+    state: directory
+
+- name: Ensure /etc/nginx/default.d exists
+  file:
+    path: /etc/nginx/default.d
+    state: directory
+
+- name: Deploy server blocks
+  loop: "{{ server_blocks }}"
+  notify: Reload NGINX
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/nginx/conf.d/{{ item }}.conf"

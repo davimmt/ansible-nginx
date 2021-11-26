@@ -1,0 +1,25 @@
+---
+plugin: aws_ec2
+
+regions:
+  - sa-east-1
+
+keyed_groups:
+  - key: tags.Name
+    prefix: ''
+    separator: ''
+  - key: tags.Environment
+    prefix: Environment
+  - key: tags.Group
+    prefix: Group
+
+groups:
+  dev: "'DEV' in (tags|list)"
+  hom: "'HOM' in (tags|list)"
+  prd: "'PRD' in (tags|list)"
+
+hostnames:
+  - network-interface.addresses.private-ip-address
+
+compose:
+  ansible_host: private_ip_addess

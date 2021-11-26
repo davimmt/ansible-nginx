@@ -1,0 +1,7 @@
+---
+- name: Undeploy server blocks
+  loop: "{{ server_blocks }}"
+  notify: Reload NGINX
+  file:
+    state: absent
+    path: "/etc/nginx/conf.d/{{ item }}.conf"

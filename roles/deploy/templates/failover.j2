@@ -1,0 +1,9 @@
+server {
+    listen 80;
+    server_name failover;
+
+    location / {
+        add_header X-Default-Server false always;
+        return 204;
+    }
+}
