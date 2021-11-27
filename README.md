@@ -6,6 +6,7 @@ Configuration files will be `shared` to all branches while `individual` files wi
 ||
 |---|
 | roles/deploy/defaults |
+| roles/deploy/templates |
 | roles/deploy/vars |
 | roles/undeploy/defaults |
 ||
@@ -16,7 +17,9 @@ This is because *cherry-picking* will be used to merge shared files commits to a
 
 ### Checking inventory
     ansible-inventory -i inventories/ --graph
+### Main (deploy and undeploy)
+    ansible-playbook --key-file ansible.pem -i inventories/hosts main.yml
 ### Deploy
-    ansible-playbook --key-file ansible.pem -i inventories/hosts -l lab deploy.yml
+    ansible-playbook --key-file ansible.pem -i inventories/hosts deploy.yml
 ### Undeploy
-    ansible-playbook --key-file ansible.pem -i inventories/hosts -l lab undeploy.yml
+    ansible-playbook --key-file ansible.pem -i inventories/hosts undeploy.yml
