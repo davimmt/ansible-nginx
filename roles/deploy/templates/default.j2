@@ -4,6 +4,7 @@ server {
 
     location / {
         add_header X-Default-Server true always;
+        add_header X-Upstream-Server {{ default }}{{ env }}.domain.com always;
         return 204;
     }
 }
