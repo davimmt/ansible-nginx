@@ -1,15 +1,3 @@
-lab:
-  hosts:
-    lab_nginx:
-      ansible_host: 192.168.15.175
-      ansible_user: ansible
-
-devhom:
-  hosts:
-    devhom_nginx:
-      ansible_host: 192.168.15.169
-      ansible_user: ansible
-
 prd:
   children:
     prd_nginx:
