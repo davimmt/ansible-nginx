@@ -1,4 +1,2 @@
 ---
 env: 
-default: default
-failover: failover
