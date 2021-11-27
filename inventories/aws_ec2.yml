@@ -6,7 +6,7 @@ regions:
 
 filters:
   tag:Environment:
-    - DEV
+    - HOM
 
 keyed_groups:
   - key: tags.Name
