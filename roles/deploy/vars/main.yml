@@ -1,2 +1,4 @@
 ---
-env: .hom
+env: 
+default: default
+failover: failover
