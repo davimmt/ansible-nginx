@@ -4,7 +4,7 @@ server {
 
     location / {
         add_header X-Default-Server true always;
-        add_header X-Upstream-Server app.dev.domain.com always;
+        add_header X-Upstream-Server app{ dev }.domain.com always;
         return 204;
     }
 }
