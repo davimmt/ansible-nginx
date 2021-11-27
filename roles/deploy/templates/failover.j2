@@ -4,7 +4,7 @@ server {
 
     location / {
         add_header X-Default-Server false always;
-        add_header X-Upstream-Server failover{ dev }.domain.com always;
+        add_header X-Upstream-Server {{ failover }}{{ env }}.domain.com always;
         return 204;
     }
 }
