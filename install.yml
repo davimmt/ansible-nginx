@@ -1,0 +1,9 @@
+---
+- hosts: "{{ cli_hosts | default('all') }}"
+  become: true
+  gather_facts: no
+  tasks:
+  - name: Install latest NGINX
+    yum:
+      name: nginx
+      state: latest

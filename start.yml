@@ -1,0 +1,10 @@
+---
+- hosts: "{{ cli_hosts | default('all') }}"
+  become: true
+  gather_facts: no
+  roles:
+  - common
+  tasks:
+  - name: Trigger NGINX start
+    command: /bin/true
+    notify: Start NGINX
