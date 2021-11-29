@@ -1,0 +1,8 @@
+server {
+    server_name template;
+
+    location / {
+        add_header X-Upstream-Server template{{ env }}.domain.com always;
+        return 204;
+    }
+}
