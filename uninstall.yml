@@ -1,0 +1,19 @@
+---
+- hosts: "{{ cli_hosts | default('all') }}"
+  become: true
+  gather_facts: no
+  tasks:
+  - name: Uninstall NGINX
+    yum:
+      name: nginx
+      state: removed
+
+  - name: Remove /etc/nginx/
+    file:
+      path: /etc/nginx/
+      state: absent
+  
+  - name: Remove /var/log/nginx/
+    file:
+      path: /var/log/nginx/
+      state: absent
