@@ -9,7 +9,6 @@ Configuration files will be `shared` to all branches while `individual` files wi
 | roles/deploy/templates |
 | roles/deploy/vars |
 | roles/undeploy/defaults |
-||
 
 **This means that no commit can include `shared` files and `individual` files at the same time.**
 
