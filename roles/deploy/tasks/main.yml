@@ -20,7 +20,7 @@
     state: directory
 
 - name: Deploy server blocks
-  loop: "{{ server_blocks }}"
+  loop: "{{ server_blocks | default([], true) }}"
   notify: Reload NGINX
   template:
     src: "{{ item }}.j2"
