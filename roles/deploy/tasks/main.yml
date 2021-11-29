@@ -1,13 +1,12 @@
 ---
-- name: Install latest NGINX
+- name: Ensure NGINX is installed
   yum:
     name: nginx
-    state: latest
+    state: installed
 
-- name: Start NGINX
-  service:
-    name: nginx
-    state: started
+- name: Trigger NGINX start
+  command: /bin/true
+  notify: Start NGINX
 
 - name: Ensure /etc/nginx/conf.d exists
   file:
