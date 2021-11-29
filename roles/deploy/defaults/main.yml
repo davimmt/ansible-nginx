@@ -1,5 +1,2 @@
 ---
 server_blocks:
-  - default
-  - failover
-  - app
