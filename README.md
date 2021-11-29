@@ -3,17 +3,17 @@ This repo is supossed to work in three branches side-by-side, that is: `dev`, `h
 Configuration files will be `shared` to all branches while `individual` files will be exclusive for each one 
 (they can be the same at some point):
 
-||
+|Individual files|
 |---|
 | roles/deploy/defaults |
 | roles/deploy/templates |
 | roles/deploy/vars |
 | roles/undeploy/defaults |
 
-**That means that all commits must not include `shared` files and `individual` files at the same time.**
+**This means that no commit can include `shared` files and `individual` files at the same time.**
 
-This is because `cherry-picking` will be used to merge shared files commits from another branches, while leaving individual files commits alone. <br>
-And `checkout <path>` (path should be listed in the above table) will be used to stage individual files commits from another branches, while leaving shared files commits alone.
+One should use `cherry-picking` to merge shared files commits from another branches, while leaving individual files commits alone. <br>
+And `checkout <path>` (path should be listed in the above table) can be used to stage individual files commits from another branches, while leaving shared files commits alone.
 
 ### Checking inventory
     ansible-inventory -i inventories/ --graph
