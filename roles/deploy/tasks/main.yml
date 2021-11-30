@@ -19,8 +19,8 @@
     state: directory
 
 - name: Deploy server blocks
-  loop: "{{ server_blocks | default([], true) }}"
+  loop: "{{ lookup('fileglob', 'templates/*.j2', wantlist=True) | default([], true) }}"
   notify: Reload NGINX
   template:
-    src: "{{ item }}.j2"
-    dest: "/etc/nginx/conf.d/{{ item }}.conf"
+    src: "{{ item }}"
+    dest: "/etc/nginx/conf.d/{{ item | basename | replace('.j2', '.conf') }}"
