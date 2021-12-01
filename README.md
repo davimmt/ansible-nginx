@@ -5,7 +5,7 @@ Configuration files will be `shared` to all branches while `individual` files wi
 
 |Individual files|
 |---|
-| roles/deploy/defaults |
+| hosts |
 | roles/deploy/templates |
 | roles/deploy/vars |
 | roles/undeploy/defaults |
