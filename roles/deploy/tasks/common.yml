@@ -1,0 +1,24 @@
+---
+- name: Get /etc/nginx/conf.d/*.conf files
+  register: r_server_blocks_files
+  find:
+    paths: /etc/nginx/conf.d/
+    patterns: "*.conf"
+
+- name: Parsing /etc/nginx/conf.d/*.conf files
+  set_fact:
+    server_blocks_files: "{{ r_server_blocks_files.files | map(attribute='path') | map('basename') | list }}" 
+
+- name: Get templates to deploy
+  loop: "{{ lookup('fileglob', 'templates/*.j2', wantlist=True) | default([], true) }}"
+  register: r_templates_to_deploy
+  command: echo ''
+    #var: item | basename | replace('.j2', '.conf')
+
+- name: Parsing templates to deploy
+  set_fact:
+    templates_to_deploy: "{{ r_templates_to_deploy.results | map(attribute='item') | map('basename') | map('regex_replace', '.j2', '.conf') | list }}"
+
+- name: Parsing /etc/nginx/conf.d/*.conf files to be deleted
+  set_fact:
+    server_blocks_to_delete: "{{ server_blocks_files | difference(templates_to_deploy) | list }}"
