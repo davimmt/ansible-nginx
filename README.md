@@ -28,6 +28,7 @@ And `checkout <branch> <path>` (path should be listed in the above table) can be
 - `uninstall.yml` – uninstall NGINX.
 - `start.yml` – start NGINX.
 - `stop.yml` – stop NGINX.
+- `restart.yml` – restart NGINX.
 - `deploy.yml` – will install or ensure NGINX is installed; start or ensure NGINX is started; create or ensure some necessary folders are present; deploy all server blocks that have a file at *roles/deploy/templates/\*.j2*; reload NGINX if any changes.
 - `undeploy.yml` – undeploy all server blocks that are present at *roles/undeploy/defaults/main.yml*; reload NGINX if any changes.
 - `main.yml` – deploy.yml + undeploy.yml.

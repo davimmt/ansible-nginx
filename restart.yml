@@ -1,0 +1,10 @@
+---
+- hosts: "{{ cli_hosts | default('all') }}"
+  become: true
+  gather_facts: no
+  roles:
+  - common
+  tasks:
+  - name: Trigger NGINX restart
+    command: /bin/true
+    notify: Restart NGINX
