@@ -21,4 +21,4 @@
 
 - name: Parsing /etc/nginx/conf.d/*.conf files to be deleted
   set_fact:
-    server_blocks_to_delete: "{{ server_blocks_files | difference(templates_to_deploy) | list | default(['0'], true) }}"
+    server_blocks_to_delete: "{{ server_blocks_files | difference(templates_to_deploy) | list }}"

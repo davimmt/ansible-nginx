@@ -1,7 +1,7 @@
 ---
 - name: Clean server blocks
-  loop: "{{ server_blocks_to_delete }}"
-  when: server_blocks_to_delete[0] != '0'
+  loop: "{{ server_blocks_to_delete | default([0], true) }}"
+  when: item != 0
   notify: Reload NGINX
   file:
     state: absent
