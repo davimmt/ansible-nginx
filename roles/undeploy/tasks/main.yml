@@ -1,6 +1,7 @@
 ---
 - name: Undeploy server blocks
-  loop: "{{ server_blocks | default([], true) }}"
+  loop: "{{ server_blocks | default([0], true) }}"
+  when: item != 0
   notify: Reload NGINX
   file:
     state: absent
