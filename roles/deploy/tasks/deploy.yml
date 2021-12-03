@@ -4,5 +4,5 @@
   when: templates_to_deploy[0] != '0'
   notify: Reload NGINX
   template:
-    src: "{{ item }}"
+    src: "{{ item | replace('.conf', '.j2') }}"
     dest: "/etc/nginx/conf.d/{{ item }}"
